@@ -1,0 +1,135 @@
+site_name: JDO Media Center 接入文档
+site_description: JDO Media Center 外部接入与开发指南
+site_author: JDO Media Center Team
+site_url: http://172.16.15.88/jdomediacenter/
+# 内网部署目标：/var/www/html/jdomediacenter（nginx alias）
+
+repo_name: jdo_media_center_app
+repo_url: https://gerrit.aijidou.com/jdo_media_center_app
+edit_uri: ""
+
+docs_dir: docs
+site_dir: site
+
+copyright: Copyright &copy; JDO Media Center
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+  font:
+    text: Roboto
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/git-alt
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/android
+      link: https://developer.android.com/reference/androidx/media3/session/MediaBrowser
+      name: Media3 MediaBrowser
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 4
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+nav:
+  - 首页: index.md
+  - 集成指南:
+      - 概览: integration-guide/index.md
+      - 接入说明: integration-guide/overview.md
+      - 支持的媒体源: integration-guide/media-sources.md
+      - 依赖配置: integration-guide/dependencies.md
+      - 建立连接: integration-guide/connect.md
+      - 浏览媒体内容: integration-guide/browse.md
+      - 搜索: integration-guide/search.md
+      - 播放控制: integration-guide/playback.md
+      - 播放模式: integration-guide/playback-mode.md
+      - 收藏管理: integration-guide/favorite.md
+      - 播放状态与 metadata: integration-guide/playback-state.md
+      - 当前媒体源信息: integration-guide/current-source.md
+      - 业务协议约定: integration-guide/protocol.md
+      - Spotify 兼容: integration-guide/spotify.md
+      - 接入建议: integration-guide/suggestions.md
+  - 歌词对接: lyric-guide.md
+  - 音频频谱接入: audio-spectrum.md
+  - 环境部署: install-guide.md
+  - 开发示例: examples.md
+  - API 清单: api-reference.md
+  - FAQ: faq.md
+  - 更新日志: changelog.md

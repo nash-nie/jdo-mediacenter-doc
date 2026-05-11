@@ -1,0 +1,37 @@
+name: deploy-docs
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'mkdocs.github.yml'
+      - 'requirements-docs.txt'
+      - '.github/workflows/deploy-docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements-docs.txt
+
+      - name: Build (strict)
+        run: mkdocs build --strict --clean --config-file mkdocs.github.yml
+
+      - name: Deploy
+        run: mkdocs gh-deploy --force --no-history --config-file mkdocs.github.yml

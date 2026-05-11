@@ -1,0 +1,10 @@
+# GitHub Pages 专用配置
+# 继承 mkdocs.yml，仅覆盖 URL / 仓库相关字段，方便内网部署与 GitHub Pages 共存
+# 用法：mkdocs build --strict --clean --config-file mkdocs.github.yml
+INHERIT: mkdocs.yml
+
+site_url: https://nash-nie.github.io/jdo-mediacenter-doc/
+
+repo_name: nash-nie/jdo-mediacenter-doc
+repo_url: https://github.com/nash-nie/jdo-mediacenter-doc
+edit_uri: edit/main/docs/
