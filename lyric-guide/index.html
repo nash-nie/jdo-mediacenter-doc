@@ -1,0 +1,2126 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="JDO Media Center 外部接入与开发指南">
+      
+      
+        <meta name="author" content="JDO Media Center Team">
+      
+      
+        <link rel="canonical" href="https://nash-nie.github.io/jdo-mediacenter-doc/lyric-guide/">
+      
+      
+        <link rel="prev" href="../integration-guide/suggestions/">
+      
+      
+        <link rel="next" href="../audio-spectrum/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>歌词对接 - JDO Media Center 接入文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jdo-media-center-歌词对接指南" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="JDO Media Center 接入文档" class="md-header__button md-logo" aria-label="JDO Media Center 接入文档" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JDO Media Center 接入文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              歌词对接
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nash-nie/jdo-mediacenter-doc" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nash-nie/jdo-mediacenter-doc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../integration-guide/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  集成指南
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  歌词对接
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../audio-spectrum/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  音频频谱接入
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../install-guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  环境部署
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  开发示例
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API 清单
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  更新日志
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="JDO Media Center 接入文档" class="md-nav__button md-logo" aria-label="JDO Media Center 接入文档" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    JDO Media Center 接入文档
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nash-nie/jdo-mediacenter-doc" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nash-nie/jdo-mediacenter-doc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../integration-guide/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集成指南
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集成指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接入说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/media-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    支持的媒体源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/dependencies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    依赖配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/connect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    建立连接
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/browse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    浏览媒体内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    搜索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/playback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    播放控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/playback-mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    播放模式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/favorite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    收藏管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/playback-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    播放状态与 metadata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/current-source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    当前媒体源信息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    业务协议约定
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/spotify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spotify 兼容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration-guide/suggestions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接入建议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    歌词对接
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    歌词对接
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-对接结论" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 对接结论
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-常量定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 常量定义
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-目标服务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 目标服务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 目标服务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-androidmanifest-配置android-11-必须" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 AndroidManifest 配置（Android 11+ 必须）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-建立-mediabrowser-连接" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 建立 MediaBrowser 连接
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-请求参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 请求参数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 请求参数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-仅对音乐类型请求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 仅对音乐类型请求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-可选使用带-mediaitem-的重载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 可选：使用带 MediaItem 的重载
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-调用示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 调用示例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-普通歌词格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 普通歌词格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-逐字歌词格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 逐字歌词格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-兼容外层-lrccontent-包装边缘场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 兼容外层 lrcContent 包装（边缘场景）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-展示与降级建议" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 展示与降级建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-注意事项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 注意事项
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio-spectrum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    音频频谱接入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境部署
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发示例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 清单
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    更新日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-对接结论" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 对接结论
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-常量定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 常量定义
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-目标服务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 目标服务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 目标服务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-androidmanifest-配置android-11-必须" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 AndroidManifest 配置（Android 11+ 必须）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-建立-mediabrowser-连接" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 建立 MediaBrowser 连接
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-请求参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 请求参数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 请求参数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-仅对音乐类型请求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 仅对音乐类型请求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-可选使用带-mediaitem-的重载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 可选：使用带 MediaItem 的重载
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-调用示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 调用示例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-普通歌词格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 普通歌词格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-逐字歌词格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 逐字歌词格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-兼容外层-lrccontent-包装边缘场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 兼容外层 lrcContent 包装（边缘场景）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-展示与降级建议" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 展示与降级建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-注意事项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 注意事项
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="jdo-media-center-歌词对接指南">JDO Media Center 歌词对接指南<a class="headerlink" href="#jdo-media-center-歌词对接指南" title="Permanent link">&para;</a></h1>
+<p>本文档面向外部应用开发人员，说明如何通过 AndroidX Media3 从 JDO Media Center 获取当前播放歌曲的歌词，并正确识别普通 LRC 歌词与逐字歌词格式。</p>
+<h2 id="1-对接结论">1. 对接结论<a class="headerlink" href="#1-对接结论" title="Permanent link">&para;</a></h2>
+<p>外部应用通过 <code>MediaBrowser</code> / <code>MediaController</code> 连接网易云音乐服务后，使用 <code>sendCustomCommand</code> 请求歌词。返回歌词统一放在 <code>SessionResult.extras["music_lyric"]</code> 中。</p>
+<p>建议接入方按以下顺序处理：</p>
+<ol>
+<li>先请求逐字歌词 <code>CUSTOM_ACTION_FETCH_LYRIC_BY_WORD</code>。</li>
+<li>如果返回非空，按“逐字歌词 JSON”解析。</li>
+<li>如果逐字歌词为空、解析失败，或业务只需要逐句展示，再请求普通歌词 <code>CUSTOM_ACTION_FETCH_LYRIC</code>。</li>
+<li>普通歌词按标准 LRC 行格式解析：<code>[mm:ss.xx]歌词文本</code>。</li>
+</ol>
+<blockquote>
+<p>注意：逐字歌词不是标准 <code>.lrc</code> 文本，不能直接交给只支持 LRC 的控件展示。如果偶发遇到 <code>{"lrcContent":"[...]"}</code> 这种外层包装的形式（属于边缘场景，详见 §8），真正歌词内容是 <code>lrcContent</code> 里的 JSON 数组字符串。</p>
+</blockquote>
+<h2 id="2-常量定义">2. 常量定义<a class="headerlink" href="#2-常量定义" title="Permanent link">&para;</a></h2>
+<p>下面三个字符串常量是协议字面量，需要外部 App 在自己的工程中按相同的字符串值定义并使用。建议在自己的代码中集中放在一个 <code>object</code> 中：</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">object</span><span class="w"> </span><span class="nc">MediaLyricConstants</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="cm">/** 普通逐句 LRC 歌词 custom action */</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">CUSTOM_ACTION_FETCH_LYRIC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CUSTOM_ACTION_FETCH_LYRIC&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="cm">/** 逐字歌词 custom action */</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">CUSTOM_ACTION_FETCH_LYRIC_BY_WORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CUSTOM_ACTION_FETCH_LYRIC_BY_WORD&quot;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="cm">/** 返回的 SessionResult.extras 中歌词字符串的 key */</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">EXTRA_MUSIC_LYRIC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;music_lyric&quot;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>在 JDO Media Center 工程内部，这些常量分别位于
+<code>MediaBrowserManager.CUSTOM_ACTION_FETCH_LYRIC</code> /
+<code>MediaBrowserManager.CUSTOM_ACTION_FETCH_LYRIC_BY_WORD</code> 与
+<code>MediaConstContract.Source.NM.EXTRA_NETEASE_MUSIC_LYRIC</code>，外部 App 不依赖这些类，只需保证字符串值一致即可。</p>
+</blockquote>
+<h2 id="3-目标服务">3. 目标服务<a class="headerlink" href="#3-目标服务" title="Permanent link">&para;</a></h2>
+<p>请求歌词前，外部 App 需要通过 <code>MediaBrowser</code> 连接到网易云音乐的 Media3 服务。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package Name</td>
+<td><code>com.jidouauto.netease.jdo</code></td>
+</tr>
+<tr>
+<td>Service Name</td>
+<td><code>com.jidouauto.netease.jdo.service.JdoMusicMediaService</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="31-androidmanifest-配置android-11-必须">3.1 AndroidManifest 配置（Android 11+ 必须）<a class="headerlink" href="#31-androidmanifest-配置android-11-必须" title="Permanent link">&para;</a></h3>
+<p>Android 11（API 30）及以上系统对包可见性做了限制。外部 App 必须在自己的 <code>AndroidManifest.xml</code> 中声明对网易云包的查询权限，否则 <code>SessionToken.getAllServiceTokens(context)</code> 与 <code>MediaBrowser.Builder(...).buildAsync()</code> 都拿不到目标服务。</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;manifest</span><span class="w"> </span><span class="err">...</span><span class="nt">&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">&lt;queries&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nt">&lt;intent&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">            </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">android:name=</span><span class="s">&quot;androidx.media3.session.MediaLibraryService&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="nt">&lt;/intent&gt;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nt">&lt;intent&gt;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">android:name=</span><span class="s">&quot;androidx.media3.session.MediaSessionService&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="nt">&lt;/intent&gt;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="nt">&lt;intent&gt;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">android:name=</span><span class="s">&quot;android.media.browse.MediaBrowserService&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="nt">&lt;/intent&gt;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="nt">&lt;package</span><span class="w"> </span><span class="na">android:name=</span><span class="s">&quot;com.jidouauto.netease.jdo&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="nt">&lt;/queries&gt;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span>...
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nt">&lt;/manifest&gt;</span>
+</span></code></pre></div>
+<p>JDO Media Center 自身的 <code>app/src/main/AndroidManifest.xml</code> 即是这种声明方式。</p>
+<h3 id="32-建立-mediabrowser-连接">3.2 建立 MediaBrowser 连接<a class="headerlink" href="#32-建立-mediabrowser-连接" title="Permanent link">&para;</a></h3>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.content.ComponentName</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.content.Context</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.media3.session.MediaBrowser</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.media3.session.SessionToken</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.google.common.util.concurrent.ListenableFuture</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.guava.await</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">buildNeteaseMediaBrowser</span><span class="p">(</span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">):</span><span class="w"> </span><span class="n">MediaBrowser</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">componentName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ComponentName</span><span class="p">(</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="s">&quot;com.jidouauto.netease.jdo&quot;</span><span class="p">,</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="s">&quot;com.jidouauto.netease.jdo.service.JdoMusicMediaService&quot;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">)</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">sessionToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SessionToken</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">componentName</span><span class="p">)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">browserFuture</span><span class="p">:</span><span class="w"> </span><span class="n">ListenableFuture</span><span class="o">&lt;</span><span class="n">MediaBrowser</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">MediaBrowser</span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">sessionToken</span><span class="p">).</span><span class="na">buildAsync</span><span class="p">()</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">browserFuture</span><span class="p">.</span><span class="na">await</span><span class="p">()</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>如果项目未引入 <code>await()</code> 扩展，需要添加：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>implementation(&quot;org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.7.1&quot;)
+</span></code></pre></div>
+<h2 id="4-请求参数">4. 请求参数<a class="headerlink" href="#4-请求参数" title="Permanent link">&para;</a></h2>
+<p><code>sendCustomCommand</code> 的第二个参数需要传当前播放歌曲的 <code>MediaMetadata.toBundle()</code>。服务端会依赖当前歌曲元信息（特别是 <code>mediaId</code> 和 extras 中的网易侧扩展字段）查询歌词。</p>
+<p>推荐取值：</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mediaController</span><span class="p">.</span><span class="na">currentMediaItem</span><span class="o">?.</span><span class="na">mediaMetadata</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata</span><span class="p">.</span><span class="na">toBundle</span><span class="p">()</span>
+</span></code></pre></div>
+<p>不要手动拼一个只包含歌名或歌手的 <code>Bundle</code>，否则可能因为缺少 <code>mediaId</code>、数据源扩展字段等信息导致查不到歌词。</p>
+<h3 id="41-仅对音乐类型请求">4.1 仅对音乐类型请求<a class="headerlink" href="#41-仅对音乐类型请求" title="Permanent link">&para;</a></h3>
+<p>JDO Media Center 内部只在 <code>MediaMetadata.mediaType == MEDIA_TYPE_MUSIC</code> 时才会请求歌词，电台、有声书等其他类型不请求。建议外部 App 同样做一次过滤，避免无意义调用：</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">metadata</span><span class="p">.</span><span class="na">mediaType</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MediaMetadata</span><span class="p">.</span><span class="na">MEDIA_TYPE_MUSIC</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span>
+</span></code></pre></div>
+<h3 id="42-可选使用带-mediaitem-的重载">4.2 可选：使用带 MediaItem 的重载<a class="headerlink" href="#42-可选使用带-mediaitem-的重载" title="Permanent link">&para;</a></h3>
+<p>Media3 1.8.0 提供了一个标记 <code>@UnstableApi</code> 的三参重载：</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">controller</span><span class="p">.</span><span class="na">sendCustomCommand</span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">SessionCommand</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">Bundle</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">),</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">mediaItem</span><span class="p">,</span><span class="w">                              </span><span class="c1">// 当前播放项</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">mediaItem</span><span class="p">.</span><span class="na">mediaMetadata</span><span class="p">.</span><span class="na">toBundle</span><span class="p">()</span><span class="w">      </span><span class="c1">// 元信息</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>它等价于在调用前往 args 里塞了 <code>MediaConstants.EXTRA_KEY_MEDIA_ID</code>，本质和两参版相同。JDO Media Center 内部 <code>LiveShowDataProviderImpl</code> 走这条调用路径；外部 App 用两参版即可，不强制升级。</p>
+<h2 id="5-调用示例">5. 调用示例<a class="headerlink" href="#5-调用示例" title="Permanent link">&para;</a></h2>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.os.Bundle</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.media3.common.MediaMetadata</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.media3.session.MediaController</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.media3.session.SessionCommand</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.media3.session.SessionResult</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.guava.await</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">fetchLyric</span><span class="p">(</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="n">mediaController</span><span class="p">:</span><span class="w"> </span><span class="n">MediaController</span><span class="p">,</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="n">metadata</span><span class="p">:</span><span class="w"> </span><span class="n">MediaMetadata</span><span class="p">,</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="n">byWord</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="p">):</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">byWord</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="n">MediaLyricConstants</span><span class="p">.</span><span class="na">CUSTOM_ACTION_FETCH_LYRIC_BY_WORD</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="n">MediaLyricConstants</span><span class="p">.</span><span class="na">CUSTOM_ACTION_FETCH_LYRIC</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="p">:</span><span class="w"> </span><span class="n">SessionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mediaController</span><span class="p">.</span><span class="na">sendCustomCommand</span><span class="p">(</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">        </span><span class="n">SessionCommand</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">Bundle</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">),</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">        </span><span class="n">metadata</span><span class="p">.</span><span class="na">toBundle</span><span class="p">()</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">    </span><span class="p">).</span><span class="na">await</span><span class="p">()</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">resultCode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SessionResult</span><span class="p">.</span><span class="na">RESULT_SUCCESS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">extras</span>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">        </span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="n">MediaLyricConstants</span><span class="p">.</span><span class="na">EXTRA_MUSIC_LYRIC</span><span class="p">)</span>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">        </span><span class="o">?.</span><span class="na">takeIf</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">isNotBlank</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="p">}</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">fetchBestAvailableLyric</span><span class="p">(</span>
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="w">    </span><span class="n">mediaController</span><span class="p">:</span><span class="w"> </span><span class="n">MediaController</span><span class="p">,</span>
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">    </span><span class="n">metadata</span><span class="p">:</span><span class="w"> </span><span class="n">MediaMetadata</span>
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="p">):</span><span class="w"> </span><span class="n">LyricPayload? </span><span class="p">{</span>
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">byWord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fetchLyric</span><span class="p">(</span><span class="n">mediaController</span><span class="p">,</span><span class="w"> </span><span class="n">metadata</span><span class="p">,</span><span class="w"> </span><span class="n">byWord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">byWord</span><span class="p">.</span><span class="na">isNullOrBlank</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">LyricPayload</span><span class="p">.</span><span class="na">ByWord</span><span class="p">(</span><span class="n">byWord</span><span class="p">)</span>
+</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>
+</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">lrc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fetchLyric</span><span class="p">(</span><span class="n">mediaController</span><span class="p">,</span><span class="w"> </span><span class="n">metadata</span><span class="p">,</span><span class="w"> </span><span class="n">byWord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">lrc</span><span class="p">.</span><span class="na">isNullOrBlank</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-44"><a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">LyricPayload</span><span class="p">.</span><span class="na">Lrc</span><span class="p">(</span><span class="n">lrc</span><span class="p">)</span>
+</span><span id="__span-7-45"><a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-46"><a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a>
+</span><span id="__span-7-47"><a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span>
+</span><span id="__span-7-48"><a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a><span class="p">}</span>
+</span><span id="__span-7-49"><a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a>
+</span><span id="__span-7-50"><a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a><span class="kd">sealed</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">LyricPayload</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-51"><a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a><span class="w">    </span><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">ByWord</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">rawJson</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">LyricPayload</span><span class="p">()</span>
+</span><span id="__span-7-52"><a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a><span class="w">    </span><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Lrc</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">rawLrc</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">LyricPayload</span><span class="p">()</span>
+</span><span id="__span-7-53"><a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="6-普通歌词格式">6. 普通歌词格式<a class="headerlink" href="#6-普通歌词格式" title="Permanent link">&para;</a></h2>
+<p>普通歌词返回标准 LRC 文本，每行包含一个时间戳和歌词内容。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[00:00.00]作词：C君
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>[00:00.31]作曲：方大同
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>[00:01.25]曾经受过一些伤
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>[00:03.80]也许还没有遗忘
+</span></code></pre></div>
+<p>时间戳支持：</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[mm:ss]</code></td>
+<td><code>[01:23]</code></td>
+<td>精确到秒</td>
+</tr>
+<tr>
+<td><code>[mm:ss.xx]</code></td>
+<td><code>[01:23.45]</code></td>
+<td>精确到百分之一秒</td>
+</tr>
+<tr>
+<td><code>[mm:ss.xxx]</code></td>
+<td><code>[01:23.456]</code></td>
+<td>精确到毫秒</td>
+</tr>
+<tr>
+<td><code>[mm:ss:xx]</code></td>
+<td><code>[01:23:45]</code></td>
+<td>兼容冒号分隔的小数部分</td>
+</tr>
+</tbody>
+</table>
+<p>解析建议：</p>
+<ol>
+<li>按换行拆分。</li>
+<li>忽略空行和只有标签、没有正文的行，例如 <code>[ar:xxx]</code>。</li>
+<li>将时间戳转换成毫秒。</li>
+<li>按时间升序排序。</li>
+<li>如果相邻两行时间相同，通常后一行可视为翻译行，接入方可按业务决定是否展示。</li>
+</ol>
+<h2 id="7-逐字歌词格式">7. 逐字歌词格式<a class="headerlink" href="#7-逐字歌词格式" title="Permanent link">&para;</a></h2>
+<p>逐字歌词返回 JSON 数组字符串，不是标准 LRC。数组中的每个对象表示一句歌词，每句歌词内的 <code>words</code> 表示逐字或逐词时间轴。</p>
+<blockquote>
+<p>重要：句级 <code>duration</code> 表示<strong>当前句实际唱词时长</strong>（最后一个字结束 - 第一个字开始），并不一定等于"到下一句开始的间隔"。展示整句的高亮窗口时通常需要用 <code>下一句的 start - 当前句的 start</code> 自行计算。JDO Media Center 在 <code>DualLrcHelper.handleDuration</code> 中就是这样处理的：取下一句（跳过翻译行）的 <code>start</code> 减当前句 <code>start</code> 作为整句展示时长。</p>
+</blockquote>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">[</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1890</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1250</span><span class="p">,</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="nt">&quot;words&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">      </span><span class="p">{</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="nt">&quot;suspend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1250</span><span class="p">,</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="nt">&quot;words&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;曾&quot;</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">      </span><span class="p">},</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">      </span><span class="p">{</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="nt">&quot;suspend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="nt">&quot;words&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;经&quot;</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="p">]</span>
+</span></code></pre></div>
+<p>字段说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>单位</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td>Long</td>
+<td>ms</td>
+<td>当前句开始时间，相对歌曲起点</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Long</td>
+<td>ms</td>
+<td>当前句唱词时长</td>
+</tr>
+<tr>
+<td><code>words</code></td>
+<td>Array</td>
+<td>-</td>
+<td>当前句的逐字/逐词列表</td>
+</tr>
+<tr>
+<td><code>words[].suspend</code></td>
+<td>Long</td>
+<td>ms</td>
+<td>当前字或词开始时间，相对歌曲起点</td>
+</tr>
+<tr>
+<td><code>words[].duration</code></td>
+<td>Long</td>
+<td>ms</td>
+<td>当前字或词持续时长</td>
+</tr>
+<tr>
+<td><code>words[].words</code></td>
+<td>String</td>
+<td>-</td>
+<td>当前字或词文本</td>
+</tr>
+</tbody>
+</table>
+<p>逐字歌词 Kotlin 数据结构示例：</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.SerialName</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.Serializable</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nd">@Serializable</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">WordByWordLine</span><span class="p">(</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">duration</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">,</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">start</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">,</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">words</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">WordByWordToken</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emptyList</span><span class="p">()</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="p">)</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="nd">@Serializable</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">WordByWordToken</span><span class="p">(</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">duration</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">,</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">suspend</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">,</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="nd">@SerialName</span><span class="p">(</span><span class="s">&quot;words&quot;</span><span class="p">)</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">text</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>如果接入方只需要逐句展示，可以把逐字 JSON 转成 LRC：</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.json.Json</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">lyricJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Json</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="n">ignoreUnknownKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">}</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">wordByWordJsonToLrc</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">normalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unwrapLrcContentIfNeeded</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lyricJson</span><span class="p">.</span><span class="na">decodeFromString</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">WordByWordLine</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">lines</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="p">.</span><span class="na">sortedBy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">start</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="p">.</span><span class="na">mapNotNull</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="na">words</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="n">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">text</span><span class="w"> </span><span class="p">}.</span><span class="na">trim</span><span class="p">()</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="na">isBlank</span><span class="p">())</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s">&quot;</span><span class="si">${</span><span class="n">formatLrcTime</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="na">start</span><span class="p">)</span><span class="si">}$</span><span class="n">text</span><span class="s">&quot;</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">        </span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="n">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="p">}</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">formatLrcTime</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">totalSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ms</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">1000</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">minute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalSeconds</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">60</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalSeconds</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">60</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">centisecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ms</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">1000</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">10</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;[%02d:%02d.%02d]&quot;</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">minute</span><span class="p">,</span><span class="w"> </span><span class="n">second</span><span class="p">,</span><span class="w"> </span><span class="n">centisecond</span><span class="p">)</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="8-兼容外层-lrccontent-包装边缘场景">8. 兼容外层 <code>lrcContent</code> 包装（边缘场景）<a class="headerlink" href="#8-兼容外层-lrccontent-包装边缘场景" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>JDO Media Center 当前在线版本的网易云数据源直接返回纯 JSON 数组字符串，不存在 <code>lrcContent</code> 外层包装。本节属于历史/边缘场景的容错建议，如果你确认数据源版本稳定，可跳过。</p>
+</blockquote>
+<p>部分链路抓到的数据可能长这样：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nt">&quot;lrcContent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[{\&quot;duration\&quot;:312,\&quot;start\&quot;:0,\&quot;words\&quot;:[{\&quot;duration\&quot;:312,\&quot;suspend\&quot;:0,\&quot;words\&quot;:\&quot;作词：C君\&quot;}]}]&quot;</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>这不是最终逐字歌词数组，而是外层对象包装了一个字符串字段。接入方可以加一层防御性拆包，先取出 <code>lrcContent</code>，再按逐字 JSON 数组解析。</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.Serializable</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.json.Json</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nd">@Serializable</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">LyricContentWrapper</span><span class="p">(</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">lrcContent</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="p">)</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">unwrapLrcContentIfNeeded</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">trimmed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">raw</span><span class="p">.</span><span class="na">trim</span><span class="p">()</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">trimmed</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;{&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">trimmed</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">runCatching</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">        </span><span class="n">lyricJson</span><span class="p">.</span><span class="na">decodeFromString</span><span class="o">&lt;</span><span class="n">LyricContentWrapper</span><span class="o">&gt;</span><span class="p">(</span><span class="n">trimmed</span><span class="p">).</span><span class="na">lrcContent</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">    </span><span class="p">}.</span><span class="na">getOrNull</span><span class="p">()</span><span class="o">?.</span><span class="na">takeIf</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">isNotBlank</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">trimmed</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>格式识别建议：</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">detectLyricFormat</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">LyricFormat</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">normalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unwrapLrcContentIfNeeded</span><span class="p">(</span><span class="n">raw</span><span class="p">).</span><span class="na">trim</span><span class="p">()</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">        </span><span class="n">normalized</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;[&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">normalized</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;\&quot;words\&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">LyricFormat</span><span class="p">.</span><span class="na">WORD_BY_WORD_JSON</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="n">normalized</span><span class="p">.</span><span class="na">lines</span><span class="p">().</span><span class="na">any</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">trimStart</span><span class="p">().</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;[&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;]&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">LyricFormat</span><span class="p">.</span><span class="na">LRC</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">LyricFormat</span><span class="p">.</span><span class="na">UNKNOWN</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="p">}</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="kd">enum</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">LyricFormat</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">    </span><span class="n">WORD_BY_WORD_JSON</span><span class="p">,</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span><span class="n">LRC</span><span class="p">,</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="n">UNKNOWN</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="9-展示与降级建议">9. 展示与降级建议<a class="headerlink" href="#9-展示与降级建议" title="Permanent link">&para;</a></h2>
+<p>逐字展示：</p>
+<ol>
+<li>按 <code>start</code> 排序歌词句。</li>
+<li>每句内按 <code>words[].suspend</code> 排序。</li>
+<li>当前播放进度落在 <code>words[].suspend</code> 到 <code>words[].suspend + words[].duration</code> 之间时，高亮对应字或词。</li>
+<li>如果只做整句高亮，用 <code>line.start</code> 和下一句 <code>start</code> 计算整句展示区间。</li>
+</ol>
+<p>普通 LRC 展示：</p>
+<ol>
+<li>当前播放进度大于等于某行时间，并小于下一行时间时，展示当前行。</li>
+<li>最后一行可以展示到歌曲结束；如果拿不到歌曲时长，可给一个默认展示时长。</li>
+</ol>
+<p>降级规则：</p>
+<ol>
+<li>逐字歌词为空：请求普通歌词。</li>
+<li>逐字歌词不是合法 JSON：请求普通歌词。</li>
+<li>逐字歌词可解析但 <code>words</code> 为空：可拼接整句文本展示，或请求普通歌词。</li>
+<li>普通歌词为空或解析后无有效行：展示“暂无歌词”。</li>
+</ol>
+<h2 id="10-注意事项">10. 注意事项<a class="headerlink" href="#10-注意事项" title="Permanent link">&para;</a></h2>
+<ol>
+<li>歌词请求建议在 <code>onMediaItemTransition</code>、播放源切换、或当前 <code>mediaId</code> 变化后触发一次，并按歌曲缓存结果，避免高频轮询。JDO Media Center 内部用 <code>currentMetaDataId</code> 比较 <code>METADATA_KEY_MEDIA_ID</code>，只有变化时才发起请求，可作参考。</li>
+<li>请求参数必须来自当前播放中的 <code>MediaMetadata</code>，建议使用 <code>mediaController.currentMediaItem?.mediaMetadata</code>。</li>
+<li><code>music_lyric</code> 为空不一定是错误，可能是歌曲无歌词、数据源未提供、或当前元信息不足。需要在 UI 上做"暂无歌词"占位。</li>
+<li>普通歌词和逐字歌词是两种不同格式，接入方需要先识别再解析。</li>
+<li>时间单位统一为毫秒。</li>
+<li>调用 <code>sendCustomCommand</code> 之前最好先用
+   <code>mediaController.isSessionCommandAvailable(SessionCommand(action, Bundle()))</code> 判一下能力可见性，避免在不支持的源（如 Spotify、Radio Browser）上发出无效请求。</li>
+<li><code>MediaBrowser</code> 连接断开后再调用会立即返回失败的 <code>SessionResult</code>，注意区分"未连接"和"歌词为空"两种情形。</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../integration-guide/suggestions/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 接入建议">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                接入建议
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../audio-spectrum/" class="md-footer__link md-footer__link--next" aria-label="下一页: 音频频谱接入">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                音频频谱接入
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; JDO Media Center
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://developer.android.com/reference/androidx/media3/session/MediaBrowser" target="_blank" rel="noopener" title="Media3 MediaBrowser" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M420.5 253.9a24 24 0 1 1 0 48 24 24 0 1 1 0-48m-265.1 0a24 24 0 1 1 0 48 24 24 0 1 1 0-48m273.7-96.5 47.9-83c.8-1.1 1.3-2.4 1.5-3.8s.2-2.7-.1-4.1-.9-2.6-1.7-3.7-1.8-2-3-2.7-2.5-1.1-3.9-1.3-2.7 0-4 .4-2.5 1.1-3.6 1.9-1.9 2-2.5 3.2l-48.5 84.1C372.4 131 330.4 122 287.9 122s-84.5 9-123.3 26.4l-48.4-84c-.6-1.2-1.5-2.3-2.5-3.2s-2.3-1.5-3.6-1.9-2.7-.5-4-.4-2.7.6-3.9 1.3-2.2 1.6-3 2.7-1.4 2.4-1.7 3.7-.3 2.7-.1 4.1.8 2.6 1.5 3.8l47.9 83C64.5 202.2 8.2 285.5 0 384h576c-8.2-98.5-64.5-181.8-146.9-226.6"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
